@@ -24,5 +24,5 @@ Things you may want to cover:
 * ...
 
 テストするヨォ〜
-
+テスト2回目
 小原です。
