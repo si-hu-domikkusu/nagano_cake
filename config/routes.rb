@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+# 会員側
   get 'homes/top'
   devise_for :customers
   root to: 'homes#top'
@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   resources :orders
   resources :shipping_addresses
 
-  devise_for :admins
+# 管理側
+  devise_for :admins #adminに変更の可能性あり
   namespace :admin do
-    #get 'homes/top' => 'admin/homes#top'
+    get 'homes/top' => 'homes#top'
     resources :genres
+    resources :orders
     resources :order_details, only:[:update]
+    resources :items
+    resources :cus
 
   end
 
