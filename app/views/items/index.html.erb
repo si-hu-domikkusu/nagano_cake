@@ -1,2 +1,8 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<h4>商品一覧(全x件）</h4>
+
+<% @items.each do |item| %>
+ <%= link_to attachment_image_tag(@items, :image_id, :fill, 100, 100, size: '40x40', format: 'jpeg', fallback: "about_picture.jpeg"), items_path(item.id) %>
+
+<% end %>
+
+
