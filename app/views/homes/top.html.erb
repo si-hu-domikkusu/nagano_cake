@@ -9,7 +9,13 @@
         <div class="row">
         </div>
         <div class="row">
-          <h3>新着商品</h3>
+          <p><h3>新着商品</h3> 
+            |  
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.select :model %>
+              <%= f.submit '検索' %>
+            <% end %>
+          </p>
           <% @items.each do |item| %>
             <%= link_to item_show(item.id) do %>
               <%= attachment_image_tag item.id, :image_id, :fill, 100, 100, format: "jpeg", fallback: "no_image.jpg" %>
