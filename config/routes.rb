@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :cart_items
   resources :orders
   resources :shipping_addresses
+  resources :customers
 
 # 管理側
   devise_for :admins #adminに変更の可能性あり
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_details, only:[:update]
     resources :items
-    resources :custamers
-    
+    resources :customers
+
 
   end
 
