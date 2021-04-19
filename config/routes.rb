@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_details, only:[:update]
     resources :items
-    resources :cus
+    resources :custamers
 
   end
 
