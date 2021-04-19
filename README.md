@@ -26,3 +26,5 @@ Things you may want to cover:
 テストするヨォ〜
 テスト2回目
 小原です。
+
+<img class="d-block mx-auto" src="about_picture.jpeg" />
