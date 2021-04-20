@@ -1,0 +1,31 @@
+<h4>商品詳細</h4>
+
+
+<%= attachment_image_tag @item, :image, size: "300x200" %>
+
+
+<div class="field">
+  <p>商品 <%= @item.name %></p>
+</div>
+
+<div class="field">
+  <p>商品説明 <%= @item.introduction %></p>
+</div>
+
+<div class="field">
+  <p>ジャンル <%= @item.genre.name %></p>
+</div>
+
+<div class="field">
+  <p>税抜価格 <%= @item.price %>円</p>
+</div>
+
+<div class="field">
+  <p>販売ステータス
+  <% if @item.is_active == true %>
+    販売中
+  <% elsif @item.is_active == false %>
+    販売停止中
+  <% end %>
+  </p>
+</div>
