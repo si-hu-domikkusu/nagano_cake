@@ -8,6 +8,13 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.save
+      flash[:notice] = "You have created book successfully."
+      redirect_to admin_item_path(@item.id)
+    else
+    @items = Item.all
+    render :new
+    end
   end
 
   def show
@@ -20,12 +27,9 @@ class Admin::ItemsController < ApplicationController
  end
 
  private
-
  def item_params
    params.require(:item).permit(:image_id, :name, :introduction, :genre_id, :price, :is_active)
  end
-
-
 
 end
 

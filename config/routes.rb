@@ -20,11 +20,9 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :genres
     resources :orders
-    resources :order_details, only:[:update]
+    resources :order_details, only:[:update] #単数系じゃ無いかな？
     resources :items
     resources :customers
-
-
   end
 
 end
