@@ -1,7 +1,7 @@
 <div class="container">
   <h4>商品新規登録</h4>
 
-  <%= form_with model: @item, url:'/admin/items' ,local:true do |f| %>
+  <%= form_with model: @item, url: admin_items_path ,local:true do |f| %>
 
       <div class="field_form_group">
         <%= f.label :商品画像 %>
@@ -20,8 +20,7 @@
 
       <div class="field_form_group">
         <%= f.label :ジャンル %>
-        <%= f.corectionselect :genre_id, [["", "1"], ["", "2"]], include_blank: "-- 選択してください --" %>
-        <%#= select_tag 'junre_id' ,options_for_select([['--選択してください--', '0']['ケーキ', '1'], ['お菓子', '2']]) %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --") %>
       </div>
 
       <div class="field_form_group">
