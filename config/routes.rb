@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :customers
 
 # 管理側
-  devise_for :admins #adminに変更の可能性あり
+  devise_for :admins, controllers: {
+        sessions: 'admins/sessions',
+        registrations: 'admins/registrations'
+      }
+  
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :genres
