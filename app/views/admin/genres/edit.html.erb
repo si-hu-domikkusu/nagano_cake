@@ -10,7 +10,7 @@
         <% end %>
       <% end %>
 
-      <%= form_with model: @genre, local:true do |f| %>
+      <%= form_with model: @genre, url: admin_genre_path(@genre.id), local:true do |f| %>
         <div class="form-group">
           <p>
             <%= f.label :ジャンル名 %></br>
