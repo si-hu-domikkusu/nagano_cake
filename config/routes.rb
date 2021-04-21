@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :orders
   resources :shipping_addresses
   resources :customers
+  
+  # put "/customers/:id/withdraw" => "customers#withdraw", as: 'customers_withdraw'
+  
   get 'search/search'
   get '/search', to: 'search#search'
 
