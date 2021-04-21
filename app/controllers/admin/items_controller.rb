@@ -22,9 +22,17 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if  @item.update(item_params)
+        flash[:notice] = "You have updated item successfully."
+        redirect_to admin_item_path(@item)
+    else
+        render :edit
+    end
   end
 
   private
