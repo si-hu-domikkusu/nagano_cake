@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
   get 'customers/quit' => 'customers#quit'
+  get 'orders/complete' => 'orders#complete'
   resources :items
   resources :cart_items
   resources :orders
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
     resources :genres
     resources :orders
-    resources :order_details, only:[:update] #単数系じゃ無いかな？
+    resources :order_details, only:[:update]
     resources :items
     resources :customers
   end
