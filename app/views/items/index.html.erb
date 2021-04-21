@@ -1,2 +1,34 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+
+      <h3>商品一覧</h3>
+
+      <div clss="container">
+　　　<div class="row">
+　　　  <div class="search-form">
+                  <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+                    <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --") %>
+                    <%= f.submit '検索' %>
+                  <% end %>
+                </div>
+        <% @items.each do |item|  %>
+        <div class="col-md-4">
+          <%= link_to item_path(item.id) do %>
+            <%= attachment_image_tag item, :image, size: "150x150" %>
+          <% end %>
+
+          <%= item.name %>
+          <%= item.price %>
+          </div>
+        <% end %>
+        <%= paginate @items %>
+
+       </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
