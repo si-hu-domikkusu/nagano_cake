@@ -13,13 +13,15 @@ Rails.application.routes.draw do
   resources :orders
   resources :shipping_addresses
   resources :customers
+  get 'search/search'
+  get '/search', to: 'search#search'
 
 # 管理側
   devise_for :admins, controllers: {
         sessions: 'admins/sessions',
         registrations: 'admins/registrations'
       }
-  
+
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :genres
