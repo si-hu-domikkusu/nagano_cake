@@ -18,20 +18,22 @@ class CustomersController < ApplicationController
   end
 
   def quit
-    # @customer = Customer.find(params[:id])
   end
 
+
   def withdraw
-    # @customer = Customer.find(params[:id])
-    # @customer.update(is_deleted: true)
-    # reset_session
-    # flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-    # redirect_to root_path
+    @customer = Customer.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会しました。ありがとうございました。またの、ご利用をお持ちしております"
+    redirect_to root_path
   end
+
 
   private
 
-	def customer_params
+  def customer_params
 	  params.require(:customer).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :email, :postal_code, :address, :phone_number, :is_deleted)
   end
 

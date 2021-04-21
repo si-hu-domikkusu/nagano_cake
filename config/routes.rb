@@ -8,16 +8,17 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
-  get 'customers/quit' => 'customers#quit'
   get 'orders/complete' => 'orders#complete'
   resources :items
   resources :cart_items
   resources :orders
   resources :shipping_addresses
   resources :customers
-  
-  # put "/customers/:id/withdraw" => "customers#withdraw", as: 'customers_withdraw'
-  
+  # 退会確認画面
+  get '/customer/:id/quit' => 'customers#quit', as: 'quit'
+  # 論理削除用のルーティング
+  patch '/customer/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+
   get 'search/search'
   get '/search', to: 'search#search'
 
