@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
+  get 'customers/quit' => 'customers#quit'
   resources :items
   resources :cart_items
   resources :orders
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
         sessions: 'admins/sessions',
         registrations: 'admins/registrations'
       }
-  
+
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :genres
