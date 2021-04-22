@@ -1,6 +1,3 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
-
 <table>
   <thead>
     <tr>
@@ -12,15 +9,25 @@
    </tr>
   </thead>
   <tbody>
+     <% sum = 0 %>
      <% @cart_items.each do |cart_item| %>
     <tr>
       <th><%= attachment_image_tag cart_item.item, :image, size: "30x20" %><%= cart_item.item.name %></th>
       <th><%= (cart_item.item.price.to_i * 1.1).floor %></th>
-      <th><%= cart_item.amount %></th>
+      <th>
+        <%= form_with url: cart_item_path(cart_item.id), model: cart_item, local: true do |f| %>
+        <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], class: 'form-control' %>
+        <%= f.submit "変更", class: "btn btn-success" %>
+        <% end %>
+      </th>
       <th><%= (cart_item.item.price.to_i * 1.1).floor * cart_item.amount.to_i %></th>
       <th><%= link_to '削除', cart_item_path(cart_item.id), class: 'btn-sm btn-danger', method: :delete %></th>
       </tr>
+      <% sum += (cart_item.item.price.to_i * 1.1).floor * cart_item.amount.to_i %>
     <% end %>
+    <%= sum %>
   </tbody>
+  <%= link_to "買い物を続ける", root_path %>
   <%= link_to '全削除', cart_items_destroy_all_path, class: 'btn-sm btn-danger', method: :delete %>
+  <%= link_to "情報入力に進む", 
 </table>

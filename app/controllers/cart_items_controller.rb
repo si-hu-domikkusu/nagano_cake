@@ -4,6 +4,9 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    @cart_items = CartItem.find(params[:id])
+    @cart_items.update(cart_item_params)
+    redirect_to request.referer
   end
 
   def create
