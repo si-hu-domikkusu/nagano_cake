@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :items
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items
-  resources :orders
   resources :shipping_addresses
   resources :customers
   # 退会確認画面
