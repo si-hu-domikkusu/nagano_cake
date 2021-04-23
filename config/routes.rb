@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   get 'orders/complete' => 'orders#complete'
   resources :items
   resources :cart_items
-  resources :orders do
-    get "/confirm" => "orders#confirm"
-  end
   resources :shipping_addresses
   resources :customers
   # 退会確認画面
