@@ -1,2 +1,10 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h2>注文情報入力</h2>
+
+<%= form_with model: @order, url: order_confirm_path, method: :post,local: true do |f| %>
+<%= f.label :payment, "支払い方法" %>
+<br>
+<%= f.radio_button :payment,:クレジットカード,  checked: "checked" %>
+<%= f.label :payment, "クレジットカード" %>
+<br>
+<%= f.radio_button :payment, :銀行振込 %>
+<%= f.label :payment, "銀行振込" %>
