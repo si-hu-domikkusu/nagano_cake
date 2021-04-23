@@ -6,9 +6,12 @@ class OrdersController < ApplicationController
   end
 
   def new #注文情報入力画面
+    @order = Order.new
+    @customer = Customer.find(current_customer.id)
   end
 
   def confirm #注文情報確認画面
+
   end
 
   def create
@@ -16,6 +19,4 @@ class OrdersController < ApplicationController
 
   def complete #注文完了画面
   end
-
-
 end
