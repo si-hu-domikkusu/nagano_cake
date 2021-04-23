@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   get 'orders/complete' => 'orders#complete'
   resources :items
+  resources :orders
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   resources :cart_items
   resources :shipping_addresses
