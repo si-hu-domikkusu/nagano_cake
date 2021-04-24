@@ -13,23 +13,40 @@ class OrdersController < ApplicationController
 
   def confirm #注文情報確認画面
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @cart_items = CartItem.where(customer_id: current_customer.id)
     if params[:order][:address_option].to_i == 0
       @customer = Customer.find(current_customer.id)
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name
-
+      
     elsif params[:order][:address_option].to_i == 1
+      @ship = ShippingAddress.find(params[:order][:shipping_address_id])
+      @order.postal_code = @ship.postal_code
+      @order.address = @ship.address
+      @order.name = @ship.name
+
 
     elsif params[:order][:address_option].to_i == 2
-
+      @order = Order.new(order_params)
     end
+
+
 
 
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.save
+
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @cart_items.destroy_all
+
+
+    redirect_to orders_complete_path
+
 
   end
 

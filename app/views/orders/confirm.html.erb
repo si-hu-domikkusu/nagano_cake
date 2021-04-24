@@ -69,7 +69,9 @@
       <% if params[:order][:address_option].to_i == 0 %>
         <%= @customer.last_name %><%= @customer.first_name %><%= @customer.postal_code %><%= @customer.address %>
       <% elsif params[:order][:address_option].to_i == 1 %>
+        <%= @order.name %><%= @order.postal_code %><%= @order.address %>
       <% elsif params[:order][:address_option].to_i == 2 %>
+        <%= @order.name %><%= @order.postal_code %><%= @order.address %>
       <% end %>
     </div>
   </div>
@@ -99,7 +101,7 @@
 
       <tr>
         <td><%= f.label :合計金額 %></td>
-        <td><%=  f.text_area :total_payment %></td>
+        <td><%= f.text_area :total_payment ,:value => @order.total_payment = sum + 800 %></td>
       </tr>
 
       <tr>
@@ -113,12 +115,10 @@
       <tr>
         <td><%= f.label :注文ステータス %></td>
         <td><%= f.radio_button :order_status, 0 %>
-        <%= f.label "販売中", {style: "display: inline-block;"} %>
-        <%= f.radio_button :order_status, 1 %>
-        <%= f.label "銀行支払い", {style: "display: inline-block;"} %></td>
+        <%= f.label "入金待ち", {style: "display: inline-block;"} %>
       </tr>
      </table>
-      <%= f.submit "変更を保存" ,class:"btn btn-success" %>
+      <%= f.submit "注文を確定する" ,class:"btn btn-success" %>
 
       <% end %>
 
