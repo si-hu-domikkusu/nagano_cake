@@ -1,0 +1,127 @@
+ <div class = "container">
+   <div class = "row">
+    <div class = "col-3 my-5 title" >
+      <h4 class = "" >注文情報確認画面</h4>
+    </div>
+   </div>
+
+  <div class = "row">
+    <div class = "col-7">
+      <table class = "table table-bordered" >
+
+        <thead>
+          <tr>
+            <th class="table-secondary">商品名</th>
+            <th class="table-secondary">単価（税込）</th>
+            <th class="table-secondary">数量</th>
+            <th class="table-secondary">小計</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% sum = 0 %>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <th><%= attachment_image_tag cart_item.item, :image, size: "30x30" %><%= cart_item.item.name %></th>
+              <th>¥<%= (cart_item.item.price.to_i * 1.1).floor.to_s(:delimited) %></th>
+              <th>
+                  <%= cart_item.amount  %>
+              </th>
+              <th>¥<%= ((cart_item.item.price.to_i * 1.1).floor * cart_item.amount.to_i).to_s(:delimited) %></th>
+            </tr>
+            <% sum += (cart_item.item.price.to_i * 1.1).floor * cart_item.amount.to_i %>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+    <div class = "col-3 offset-1 ">
+      <table class = "table table-bordered border border-dark" >
+        <span class = "">
+        <tbody>
+          <tr><th class="table-secondary">送料</th><td>¥800</td></tr>
+          <tr><th class="table-secondary">商品合計</th><td>¥<%= sum.to_s(:delimited)  %></td></tr>
+          <tr><th class="table-secondary">請求金額</th><td>¥<%= (sum + 800).to_s(:delimited) %></td></tr>
+        </tbody>
+        </span>
+      </table>
+    </div>
+  </div>
+
+  <div class = "row" style = "height:50px">
+    <div class = "col-2">
+      <strong>支払い方法</strong>
+    </div>
+    <div class = "col">
+      <% if @order.payment_method == 0 %>
+        クレジット
+      <% else %>
+        銀行支払い
+      <% end %>
+    </div>
+  </div>
+
+  <div class = "row"  style = "height:50px">
+    <div class = "col-2">
+      <strong>お届け先</strong>
+    </div>
+    <div class = "col">
+      <% if params[:order][:address_option].to_i == 0 %>
+        <%= @customer.last_name %><%= @customer.first_name %><%= @customer.postal_code %><%= @customer.address %>
+      <% elsif params[:order][:address_option].to_i == 1 %>
+      <% elsif params[:order][:address_option].to_i == 2 %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_with model: @order, url: orders_path ,local:true do |f| %>
+     <table>
+
+      <tr>
+        <td><%= f.label :郵便番号 %></td>
+        <td><%=  f.text_area :postal_code %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :配達先住所 %></td>
+        <td><%= f.text_area :address %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :配達先宛名 %></td>
+        <td><%=  f.text_area :name %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :送料 %></td>
+        <td><%= f.text_area :shipping_cost  %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :合計金額 %></td>
+        <td><%=  f.text_area :total_payment %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :支払い方法 %></td>
+        <td><%= f.radio_button :payment_method, 0 %>
+        <%= f.label "クレジットカード", {style: "display: inline-block;"} %>
+        <%= f.radio_button :payment_method, 1 %>
+        <%= f.label "銀行支払い", {style: "display: inline-block;"} %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :注文ステータス %></td>
+        <td><%= f.radio_button :order_status, 0 %>
+        <%= f.label "販売中", {style: "display: inline-block;"} %>
+        <%= f.radio_button :order_status, 1 %>
+        <%= f.label "銀行支払い", {style: "display: inline-block;"} %></td>
+      </tr>
+     </table>
+      <%= f.submit "変更を保存" ,class:"btn btn-success" %>
+
+      <% end %>
+
+
+
+</div>
