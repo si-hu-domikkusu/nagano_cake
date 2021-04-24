@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def new #注文情報入力画面
     @order = Order.new
     @customer = Customer.find(current_customer.id)
+    @shipping_addresses = ShippingAddress.where(customer: current_customer)
   end
 
   def confirm #注文情報確認画面
