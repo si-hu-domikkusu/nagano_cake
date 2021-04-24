@@ -4,13 +4,13 @@
         <h4>注文情報入力</h4>
       </div>
 
- <%= form_with model: @orders, url:  orders_path ,local:true do |f| %>
+ <%= form_with model: @order, url: orders_confirm_path ,local:true do |f| %>
 
       <div class="field_form_group">
         <strong><%= f.label :支払い方法 %></strong><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, :ture %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, 0 %>
         <%= f.label :クレジットカード, {style: "display: inline-block;"} %><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, :false %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, 1 %>
         <%= f.label :銀行振込, {style: "display: inline-block;"} %>
       </div>
 
