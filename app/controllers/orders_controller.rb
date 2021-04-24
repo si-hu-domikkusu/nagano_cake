@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name
-      
+
     elsif params[:order][:address_option].to_i == 1
       @ship = ShippingAddress.find(params[:order][:shipping_address_id])
       @order.postal_code = @ship.postal_code
@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
 
     @cart_items = CartItem.where(customer_id: current_customer.id)
