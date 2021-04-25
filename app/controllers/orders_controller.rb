@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index #注文履歴画面
+   @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show #注文履歴詳細画面
