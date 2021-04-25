@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.title {
+  background-color:silver;
+}
+
+.pagination span{
+  padding-right:5px;
+}

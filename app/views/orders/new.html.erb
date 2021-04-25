@@ -1,2 +1,54 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class = "container">
+
+      <div class = "col-2 my-5 title" >
+        <h4>注文情報入力</h4>
+      </div>
+
+ <%= form_with model: @order, url: orders_confirm_path ,local:true do |f| %>
+
+      <div class="field_form_group">
+        <strong><%= f.label :支払い方法 %></strong><br>
+        &emsp;&emsp;<%= f.radio_button :payment_method, 0 %>
+        <%= f.label :クレジットカード, {style: "display: inline-block;"} %><br>
+        &emsp;&emsp;<%= f.radio_button :payment_method, 1 %>
+        <%= f.label :銀行振込, {style: "display: inline-block;"} %>
+      </div>
+
+
+        <br><strong><%= f.label :お届け先 %></strong></br>
+        &emsp;&emsp;<%= f.radio_button :address_option, 0 %>
+        <%= f.label :ご自身の住所, {style: "display: inline-block;"} %><br>
+        &emsp;&emsp;&emsp;&emsp;<%= @customer.last_name %><%= @customer.first_name %><%= @customer.postal_code %><%= @customer.address %></br>
+
+        <br>&emsp;&emsp;<%= f.radio_button :address_option, 1 %>
+        <%= f.label :登録ずみ住所から選択, {style: "display: inline-block;"} %>
+        <br>&emsp;&emsp;&emsp;&emsp;<%= f.collection_select(:shipping_address_id, @shipping_addresses, :id, :order_address) %><br>
+
+
+        <br>&emsp;&emsp;<%= f.radio_button :address_option, 2 %>
+          <%= f.label :新しいお届け先 %>
+        <table>
+          <tr>
+            <td>&emsp;&emsp;&emsp;&emsp;<%= f.label :郵便番号（ハイフンなし） %></td>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <td>&emsp;&emsp;&emsp;&emsp;<%= f.label :住所 %></td>
+            <td><%= f.text_field :address ,:size => "50*50" %></td>
+          </tr>
+          <tr>
+            <td>&emsp;&emsp;&emsp;&emsp;<%= f.label :宛名 %></td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+        </table>
+        <div class = "row">
+          <div class = "mx-auto">
+            <br><%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+          </div>
+        </div>
+
+
+<% end %>
+
+</div>
+

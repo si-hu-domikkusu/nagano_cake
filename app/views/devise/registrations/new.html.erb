@@ -1,29 +1,79 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class = "col-3 my-5 title" >
+<h4>新規会員登録</h4>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+<table>
+  <tr>
+    <td><%= f.label :名前 %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :（姓） %></td>
+    <td>&emsp;<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :（名） %></td>
+    <td>&emsp;<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <tr>
+    <td><%= f.label :フリガナ %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :（セイ） %></td>
+    <td>&emsp;<%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :（メイ） %></td>
+    <td>&emsp;<%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <tr>
+    <td><%= f.label :メールアドレス %></td>
+    <td>&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+　<tr>
+    <td><%= f.label :郵便番号（ーなし） %></td>
+    <td>&emsp;<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+  </tr>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  <tr>
+    <td><%= f.label :住所 %></td>
+    <td>&emsp;<%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+  </tr>
 
-<%= render "devise/shared/links" %>
+  <tr>
+    <td><%= f.label :電話番号（ーなし） %></td>
+    <td>&emsp;<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+  </tr>
+
+ <tr>
+      <td><%= f.label :パスワード %></td>
+      <td>&emsp;<%= f.password_field :password, autocomplete: "current-password", :size => "30*30" %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>&emsp;
+        <% if devise_mapping.rememberable? %>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td ><div class="actions mt-3">
+        &emsp;<%= f.submit "ログイン",class:"btn btn-primary" %>
+  <% end %>
+     </td>
+    </tr>
+    <tr>
+    <td><h5>既に登録済みの方</h5></td>
+    <td><p><%= link_to "こちら " ,new_customer_session_path %>からログインしてください。</p></td>
+    </tr>
+</table>
+</div>
