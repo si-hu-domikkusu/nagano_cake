@@ -1,8 +1,6 @@
  <div class = "container">
-   <div class = "row">
     <div class = "col-3 my-5 title" >
       <h4 class = "" >注文情報確認画面</h4>
-    </div>
    </div>
 
   <div class = "row">
@@ -67,11 +65,11 @@
     </div>
     <div class = "col">
       <% if params[:order][:address_option].to_i == 0 %>
-        <%= @customer.last_name %><%= @customer.first_name %><%= @customer.postal_code %><%= @customer.address %>
+        <%= @customer.postal_code %> <%= @customer.address %> <%= @customer.last_name %><%= @customer.first_name %>
       <% elsif params[:order][:address_option].to_i == 1 %>
-        <%= @order.name %><%= @order.postal_code %><%= @order.address %>
+        <%= @order.postal_code %> <%= @order.address %> <%= @order.name %>
       <% elsif params[:order][:address_option].to_i == 2 %>
-        <%= @order.name %><%= @order.postal_code %><%= @order.address %>
+       <%= @order.postal_code %> <%= @order.address %> <%= @order.name %>
       <% end %>
     </div>
   </div>
@@ -80,42 +78,36 @@
      <table>
 
       <tr>
-        <td><%= f.label :郵便番号 %></td>
         <td><%=  f.hidden_field :postal_code %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :配達先住所 %></td>
-        <td><%= f.text_area :address %></td>
+        <td><%= f.hidden_field :address %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :配達先宛名 %></td>
-        <td><%=  f.text_area :name %></td>
+        <td><%=  f.hidden_field :name %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :送料 %></td>
-        <td><%= f.text_area :shipping_cost  %></td>
+        <td><%= f.hidden_field :shipping_cost  %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :合計金額 %></td>
-        <td><%= f.text_area :total_payment ,:value => @order.total_payment = sum + 800 %></td>
+        <td><%= f.hidden_field :total_payment ,:value => @order.total_payment = sum + 800 %></td>
       </tr>
 
       <tr>
-        <td><%= f.label :支払い方法 %></td>
-        <td><%= f.radio_button :payment_method, :クレジットカード %>
-        <%= f.label "クレジットカード", {style: "display: inline-block;"} %>
-        <%= f.radio_button :payment_method, :銀行振込 %>
-        <%= f.label "銀行振込", {style: "display: inline-block;"} %></td>
+        <td><%= f.hidden_field :payment_method %>
       </tr>
 
 
      </table>
-      <%= f.submit "注文を確定する" ,class:"btn btn-success" %>
-
+     <div class = "row">
+        <div class = "mx-auto">
+          <%= f.submit "注文を確定する" ,class:"btn btn-success" %>
+        </div>
+     </div>
       <% end %>
 
 

@@ -19,7 +19,7 @@
       <h2><%= @item.name %></h2>
       <p><%= @item.introduction %></p>
       <br>
-      <p><strong><h4></h4>¥ <%= @item.price %></strong>(税込)</p>
+      <p><strong><h4></h4>¥<%= (@item.price.to_i * 1.1).floor.to_s(:delimited) %></strong>(税込)</p>
     </div>
   </div>
     <div class="row offset-7">
