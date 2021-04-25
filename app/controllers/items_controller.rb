@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
     @items = Item.all.page(params[:page]).per(8)
     @item_amount = Item.count
     @genres = Genre.all
+    @genre = 0
   end
 
   def show
