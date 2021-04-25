@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def show #注文履歴詳細画面
+   @order = Order.find(params[:id])
   end
 
   def new #注文情報入力画面
