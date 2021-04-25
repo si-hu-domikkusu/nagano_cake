@@ -8,9 +8,9 @@
 
       <div class="field_form_group">
         <strong><%= f.label :支払い方法 %></strong><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, 0 %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, :クレジットカード %>
         <%= f.label :クレジットカード, {style: "display: inline-block;"} %><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, 1 %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, :銀行振込 %>
         <%= f.label :銀行振込, {style: "display: inline-block;"} %>
       </div>
 

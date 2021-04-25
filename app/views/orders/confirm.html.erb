@@ -53,10 +53,10 @@
       <strong>支払い方法</strong>
     </div>
     <div class = "col">
-      <% if @order.payment_method == 0 %>
-        クレジット
+      <% if @order.payment_method == "クレジットカード" %>
+        クレジットカード
       <% else %>
-        銀行支払い
+        銀行振込
       <% end %>
     </div>
   </div>
@@ -81,7 +81,7 @@
 
       <tr>
         <td><%= f.label :郵便番号 %></td>
-        <td><%=  f.text_area :postal_code %></td>
+        <td><%=  f.hidden_field :postal_code %></td>
       </tr>
 
       <tr>
@@ -106,10 +106,10 @@
 
       <tr>
         <td><%= f.label :支払い方法 %></td>
-        <td><%= f.radio_button :payment_method, 0 %>
+        <td><%= f.radio_button :payment_method, :クレジットカード %>
         <%= f.label "クレジットカード", {style: "display: inline-block;"} %>
-        <%= f.radio_button :payment_method, 1 %>
-        <%= f.label "銀行支払い", {style: "display: inline-block;"} %></td>
+        <%= f.radio_button :payment_method, :銀行振込 %>
+        <%= f.label "銀行振込", {style: "display: inline-block;"} %></td>
       </tr>
 
 
