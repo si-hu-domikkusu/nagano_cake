@@ -1,79 +1,65 @@
 <div class="container">
-  <div class = "col-3 my-5 title" >
+  <div class = "col-2 my-4 title" >
 <h4>新規会員登録</h4>
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-<table>
+
+<table class="table table-borderless">
   <tr>
     <td><%= f.label :名前 %></td>
+    <td><%= f.label :（姓）%>&emsp;<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>&emsp;
+        <%= f.label :（名）%>&emsp;<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
   </tr>
-  <tr>
-    <td><%= f.label :（姓） %></td>
-    <td>&emsp;<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :（名） %></td>
-    <td>&emsp;<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
-  </tr>
-
   <tr>
     <td><%= f.label :フリガナ %></td>
+    <td><%= f.label :（セイ） %><%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>&emsp;
+        <%= f.label :（メイ） %><%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
   </tr>
-  <tr>
-    <td><%= f.label :（セイ） %></td>
-    <td>&emsp;<%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :（メイ） %></td>
-    <td>&emsp;<%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
-  </tr>
-
   <tr>
     <td><%= f.label :メールアドレス %></td>
-    <td>&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "35*35" %></td>
   </tr>
-
 　<tr>
-    <td><%= f.label :郵便番号（ーなし） %></td>
-    <td>&emsp;<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
+    <td><%= f.label :郵便番号（ハイフンなし） %></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></td>
   </tr>
-
   <tr>
     <td><%= f.label :住所 %></td>
-    <td>&emsp;<%= f.text_field :address, autofocus: true, autocomplete: "address" %></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.text_field :address, autofocus: true, autocomplete: "address", :size => "50*50" %></td>
   </tr>
-
   <tr>
-    <td><%= f.label :電話番号（ーなし） %></td>
-    <td>&emsp;<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+    <td><%= f.label :電話番号（ハイフンなし）%></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
   </tr>
-
- <tr>
-      <td><%= f.label :パスワード %></td>
-      <td>&emsp;<%= f.password_field :password, autocomplete: "current-password", :size => "30*30" %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>&emsp;
+  <tr>
+    <td><%= f.label :パスワード（6文字以上） %></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.password_field :password, autocomplete: "current-password", :size => "35*35" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :パスワード（確認用） %></td>
+    <td>&emsp;&emsp;&emsp;&emsp;<%= f.password_field :password_confirmation, autocomplete: "off", :size => "35*35" %></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>&emsp;&emsp;&emsp;&emsp;
         <% if devise_mapping.rememberable? %>
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
-
         <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td ><div class="actions mt-3">
-        &emsp;<%= f.submit "ログイン",class:"btn btn-primary" %>
-  <% end %>
-     </td>
-    </tr>
-    <tr>
-    <td><h5>既に登録済みの方</h5></td>
-    <td><p><%= link_to "こちら " ,new_customer_session_path %>からログインしてください。</p></td>
-    </tr>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><div class="actions mt-3">
+      &emsp;&emsp;&emsp;&emsp;<%= f.submit "新規登録",class:"btn btn-success" %>
+      <% end %>
+    </td>
+  </tr>
 </table>
+  <div class = "col-3 my-1 title" >
+    <h4>既に登録済みの方</h4>
+  </div>
+  　<p>&emsp;&emsp;<%= link_to "こちら " ,new_customer_session_path %>からログインしてください。</p>
 </div>
