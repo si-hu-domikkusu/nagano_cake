@@ -9,7 +9,7 @@
         <%= link_to "" ,new_admin_item_path ,class: "fas fa-plus-circle" %>
         </span>
       </div>
-      <table class = "table">
+      <table class = "table table-bordered">
         <thead class="table-secondary">
           <tr>
             <th >商品ID</th>
@@ -28,7 +28,7 @@
                   <%= item.name %>
                 <% end %>
               </th>
-              <th><%= item.price %></th>
+              <th><%= item.price.to_s(:delimited) %>円</th>
 
               <th><%= item.genre.name %></th>
 
