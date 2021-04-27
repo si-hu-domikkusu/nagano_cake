@@ -8,9 +8,9 @@
 
       <div class="field_form_group">
         <strong><%= f.label :支払い方法 %></strong><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, 0 %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, :クレジットカード %>
         <%= f.label :クレジットカード, {style: "display: inline-block;"} %><br>
-        &emsp;&emsp;<%= f.radio_button :payment_method, 1 %>
+        &emsp;&emsp;<%= f.radio_button :payment_method, :銀行振込 %>
         <%= f.label :銀行振込, {style: "display: inline-block;"} %>
       </div>
 
@@ -21,7 +21,7 @@
         &emsp;&emsp;&emsp;&emsp;<%= @customer.last_name %><%= @customer.first_name %><%= @customer.postal_code %><%= @customer.address %></br>
 
         <br>&emsp;&emsp;<%= f.radio_button :address_option, 1 %>
-        <%= f.label :登録ずみ住所から選択, {style: "display: inline-block;"} %>
+        <%= f.label :登録済住所から選択, {style: "display: inline-block;"} %>
         <br>&emsp;&emsp;&emsp;&emsp;<%= f.collection_select(:shipping_address_id, @shipping_addresses, :id, :order_address) %><br>
 
 
