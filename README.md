@@ -1,28 +1,13 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+長野ケーキ　ECサイト
+DMM WEBCAMPのチーム開発で作成するアプリ.
 
-Things you may want to cover:
+チーム名：シーフードミックス
+メンバー：ゆう、おばら、いと、つづ
 
-* Ruby version
+推奨環境
+Rails Version 5.2.5
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-テストするヨォ〜
-テスト2回目
-小原です。
+設計書
+[ER図](https://drive.google.com/file/d/15o_KH3AaLBEksCsxBhiYQvMRh-nxWAo0/view?usp=sharing)
+[アプリケーション定義書](https://docs.google.com/spreadsheets/d/1kvK_Z4YtnMmpMEDi0ilvskZWlmC-7A-rU-Vg4cJqrVc/edit?usp=sharing)
